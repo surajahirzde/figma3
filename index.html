@@ -12,11 +12,14 @@
     <title>Project 3</title>
     
   </head>
+ 
   <body>
     <h1>Calc</h1>
     <form class="calculator" name="calc">
       <!-- <div class="screen"></div> -->
-      <input class="screen" type="number" name="txt" />
+      <input class="screen" type="text" name="txt" onkeypress="return event.charCode >= 48 && event.charCode <= 57" readonly />
+      <!-- <input class="screen" type="number" name="txt" /> -->
+
 
       <div class="buttons">
         <div class="btn1">
@@ -39,9 +42,10 @@
           <span onclick="document.calc.txt.value +='3'">3</span>
           <span onclick="document.calc.txt.value +='-'">-</span>
         </div>
+        
 
         <div class="btn4">
-          <span onclick="document.calc.txt.value +='.'">.</span>
+          <span  onclick=" addDecimal().calc.txt.value +='.'"  >.</span>
           <span onclick="document.calc.txt.value +='0'">0</span>
           <span onclick="document.calc.txt.value +='/'">/</span>
           <span onclick="document.calc.txt.value +='*'">x</span>
@@ -65,6 +69,13 @@
     function backSpace() {
       document.calc.txt.value = document.calc.txt.value.slice(0, -1);
     }
+
+    function addDecimal() {
+  if (!document.calc.txt.value.includes('.')) {
+    document.calc.txt.value += '.';
+  }
+}
+
 </script>
 
   
